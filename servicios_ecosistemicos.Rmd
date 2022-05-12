@@ -1,0 +1,376 @@
+---
+title: "Servicios del ecosistema RBCVC"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+<style>
+body {
+text-align: justify}
+</style>
+
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+
+```{r, include=FALSE}
+library(dplyr)
+```
+
+```{r, include=FALSE}
+library(DT)
+library(formattable)
+```
+
+
+```{r, include=FALSE}
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(plotly)
+library(leaflet)
+library(rgdal)
+```
+
+
+```{r, include=FALSE}
+library(sf)
+library(tmap)
+library(dplyr)
+```
+
+
+# Portada 
+
+Column {data-width=450}
+-------------------------------------------------------------------
+
+###
+
+<br> <center>**Caracterización biofísica de la Reserva de la Biosfera de la Cordillera Volcánica Central**</center>
+
+<br> <center>Elaborado por: Ing. Keneth Masis Leandro</center>
+
+<br> <center>Para: Comisión Costarricense de Cooperación con la UNESCO</center>
+
+
+<div>
+<p style = 'text-align:center;'>
+<img src="imagenes/logocomisionUNESCO.jpg" alt="JuveYell" width=70%>
+</p>
+</div>
+
+
+
+Column {.tabset .tabset-fade}
+-------------------------------------------------------------------
+
+
+### Lista de figuras
+
+• **Figura 1**. Producción neta de agua de las fuentes operadas por la ESPH y el AyA en la región Metropolitana
+
+• **Figura 2**. Concesiones de minas y canteras vigentes en el territorio de la RBCVC. Fuente: DGM-SNIT (2017).
+
+• **Figura 3**. Vista área de la planta de Holcim en Agua Caliente de Cartago. Tomado de: (Madrigal, 2016).
+
+• **Figura 4**. Tierra Blanca, óleo. Teodorico Quirós, 1946.
+
+• **Figura 5**. Piedra de Aserrí. Fotografía de Jarquín Drone (2020).
+
+• **Figura 6**. Fotograma de la película de Hollywood, Congo (1995), grabado en el Volcán Irazú.
+
+• **Figura 7**. Andrey Amador entrenado en la provincia de Cartago. Fotografía de José Cordero (2015).
+
+
+### Lista de cuadros
+
+• **Cuadro 1**. Cantidad de personas que visitan áreas silvestres en la RBCVC.
+
+• **Cuadro 2**. Cantidad de personas que visitan parques recreativos en la RBCVC.
+
+
+### Referencias
+
+• CRhoy. (2012). Amador señala que entrenamientos en Cartago fueron clave para éxito en el Giro. Recuperado de: https://archivo.crhoy.com/andrey-amador-senala-que-sus-entrenamientos-en-cartago-fueron-clave-para-el-exito-en-el-giro/deportes/ 
+Instituto Costarricense de Acueductos y Alcantarillados. (2019). Anuario estadístico 2012-2018. Recuperado de: https://www.aya.go.cr/transparenciaInst/datos_abiertos/estregsec/Anuario%20Estad%C3%ADstico%202012-2018.pdf 
+
+• Masís, F. (2017). Cartago es la mejor zona para practicar ciclismo en Costa Rica. La Nación. Recuperado de: https://www.nacion.com/puro-deporte/otros-deportes/cartago-es-la-mejor-zona-para-practicar-ciclismo-en-costa-rica/N3BX2OWD4VAAFA2USE277UQ4JQ/story/ 
+
+• Orozco, J. (2021). Cobertura y calidad del agua para uso y consumo humano suministrada por municipalidades y la ESPH en el 2020. Laboratorio Nacional de Aguas. Recuperado de: https://www.aya.go.cr/Noticias/Documents/Informe%20Calidad%20y%20Cobertura%20Municipalidades%20y%20ESPH%202020.pdf 
+
+• Rojas, L.A. (2015). La artelización del paisaje: Perspectiva de los movimientos de la pintura costarricense. Revista Herencia vol.29 (1). Recuperado de: https://www.academia.edu/37755932/La_Artelizacio_n_de_paisaje_perspectiva_de_los_movimientos_de_la_pintura_costarricense 
+
+• Sánchez, A. (2012). El Cadejos sí existe: aportes folclorísticos a la lexicografía. Recuperado de: https://revistas.ucr.ac.cr/index.php/kanina/article/view/2335 
+
+• Sistema Nacional de Áreas de Conservación. (2019). Informe anual Estadísticas SEMEC 2018. Recuperado de: https://www.sinac.go.cr/ES/transprncia/Informe%20SEMEC/Informe%20SEMEC%202018.pdf 
+
+• Sistema Nacional de Áreas de Conservación. (2021). Informe anual Estadísticas SEMEC 2019-2020. Recuperado de: https://www.sinac.go.cr/ES/transprncia/Informe%20SEMEC/Informe%20SEMEC%202019-2020.pdf 
+
+• Siu, M. (2021). Unión de Concretera con Holcim afectaría precio del cemento. Diario Extra. Recuperado de: https://www.diarioextra.com/Noticia/detalle/458382/uni-n-de-concretera-con-holcim-afectar-a-precio-del-cemento#:~:text=Holcim%20concentra%20m%C3%A1s%20del%2050,del%20cemento%20en%20Costa%20Rica. 
+
+• Zeledón, E. (2018). Leyendas costarricenses. Editorial Universidad Nacional de Costa Rica.
+
+
+
+
+# Agua {data-navmenu="Servicios de aprovisionamiento"} 
+
+
+Column {data-width=450}
+----------------------------------------------------------
+
+###
+
+
+**Producción de agua**
+
+
+En Costa Rica existen 4 tipos de actores encargados de la explotación de fuentes de agua y operación de acueductos; el Instituto Costarricense de Acueductos y Alcantarillados (AyA), la Empresa de Servicios Público de Heredia (ESPH), los gobiernos locales y las Asociaciones administradoras de los Sistemas de Acueductos y Alcantarillados comunales. Los tres cantones atendidos por la ESPH; Heredia, San Isidro y San Rafael, se encuentran dentro de la RBCVC. Por su parte, de los 28 gobiernos locales que operan acueductos a nivel nacional (Orozco, 2021), 17 de ellos se encuentran al menos parcialmente dentro de los límites de la RBCVC, a saber: Aserrí, Grecia, Naranjo, Poas, Alajuela, Flores, Santo Domingo, Santa Bárbara, Cartago, Jiménez, La Unión, Paraíso, Turrialba, Alvarado, Oreamuno, Pococí, Guácimo, Siquirres, Sarapiquí. En lo concerniente al AyA, la región categorizada como Gran Área Metropolitana (GAM) abarca la mayor parte de la RBCVC y en esta se produce el 55% del agua producida en el último quinquenio por parte del Instituto Costarricense de Acueductos y Alcantarillados a nivel país (AyA, 2019). En el Cuadro 1, se muestra la producción neta por tipo de fuente de los sistemas operados por el AyA y la ESPH para los años 2015 a 2020.
+
+
+Column {.tabset .tabset-fade}
+----------------------------------------------------------
+
+### Figura 1. Producción neta de agua de las fuentes operadas por la ESPH y el AyA en la región Metropolitana.
+
+```{r, include=FALSE}
+produccion_neta_aya <- read.csv("bases/produccion_agua_resumida.csv")
+produccion_neta_aya <- produccion_neta_aya |> filter(Año > 2014)
+produccion_neta_aya <- mutate(produccion_neta_aya, Producción = Producción/1000000)
+```
+
+```{r, include=FALSE}
+ggproduccion_agua <- ggplot(produccion_neta_aya, aes(x=Año, y=Producción, fill=Tipo)) + geom_bar(position = "stack", stat = "identity") + xlab('Año') +
+  ylab('Producción neta (millones de m3)') + scale_x_continuous(breaks = c(2015,2016,2017,2018,2019,2020)) + scale_y_continuous(breaks = c(45, 90, 135, 180))
+```
+
+```{r}
+ggplotly(ggproduccion_agua)
+```
+
+
+
+
+# Canteras {data-navmenu="Servicios de aprovisionamiento"} 
+
+
+Column {data-width=450}
+----------------------------------------------------------
+
+###
+
+
+**Minas y canteras**
+
+En el mapa de la Figura 1 se muestran las concesiones vigentes para explotación de minas, canteras, causes de dominio público y plantas de aprovechamiento de acuerdo con información de la Dirección de Geología y Minas (DGM de Costa Rica) (DGM-SNIT, 2017). Pasando el cursor sobre el mapa puede obtenerse el número de expediente correspondiente y haciendo clic se despliega información concerniente al tipo de proyecto y los materiales extraídos. 
+
+
+En el territorio de la RBCVC se ubican las tres canteras que tiene en el país el grupo Holcim (La Chilena, Azul y Llano Grande). Holcim posee más de un 50% de la cuota de mercado del cemento en Costa Rica (Siu, 2021), lo que da cuenta de la relevancia para el país de las materias primas extraídas en la RBCVC. 
+
+
+Column {.tabset .tabset-fade}
+----------------------------------------------------------
+
+### Figura 2. Concesiones de minas y canteras vigentes en el territorio de la RBCVC. Fuente: DGM-SNIT (2017).
+
+
+```{r,include=FALSE}
+tmap_mode(mode = "view")
+```
+
+
+```{r,include=FALSE}
+minero_vigente_rbcvc <- st_read("minero_vigente_rbcvc.gpkg")
+```
+
+
+```{r,include=FALSE}
+limites_rbcvc <- st_read("limites_rbcvc.gpkg")
+```
+
+
+```{r}
+tm_shape(minero_vigente_rbcvc) +
+  tm_polygons(col="brown", popup.var = c("proyecto", "clase", "materiales")) +
+tm_shape(limites_rbcvc) +
+  tm_borders(col="red") +
+  tmap_options(basemaps = "Esri.WorldTopoMap")
+  
+```
+
+
+### Figura 3. Vista área de la planta de Holcim en Agua Caliente de Cartago. Tomado de: (Madrigal, 2016).
+
+<div>
+<p style = 'text-align:center;'>
+<img src="imagenes/Plantaholcim.jpg" alt="JuveYell" width=100%>
+</p>
+</div>
+
+
+
+# Inspiración {data-navmenu="Servicios culturales"}
+
+
+Column {data-width=450}
+----------------------------------------------------------
+###
+
+**Inspiración artística**
+
+
+Los ecosistemas son fuente de inspiración para el arte en sus diversas manifestaciones. Asimismo, algunas obras de pintura y literatura inspiradas por el paisaje pueden convertirse en verdaderos símbolos y elementos reconocibles de un territorio particular. En el caso de la Reserva de la Cordillera Volcánica Central, sus características biofísicas como relieve y clima resuenan en algunas de las obras más famosas de la literatura costarricense, como es el caso de los Cuentos de Angustia y Paisajes de Carlos Salazar Herrera (véase El Camino) (Rojas, 2015), asimismo, fauna característica de la reserva es protagonista de los Cuentos de mi Tía Panchita, de la escritora Carmen Lyra. 
+
+
+
+Column {.tabset .tabset-fade}
+----------------------------------------------------------
+
+### Figura 4. Tierra Blanca, óleo. Teodorico Quirós, 1946.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="imagenes/teodorico_quiros_tierrablanca.jpg" alt="JuveYell" width=100%>
+</p>
+</div>
+
+
+# Valor cultural {data-navmenu="Servicios culturales"}
+
+
+Column {data-width=450}
+----------------------------------------------------------
+
+###
+
+**Paisajes culturalmente signiticativos** 
+
+Paisajes culturalmente significativos. Un ejemplo de paisaje con estas características es la Piedra de Aserrí, una formación rocosa de más de 100 metros de altura, ligada al folklor costarricense, con leyendas asociadas como la de la Bruja Zarate (Sánchez, 2012). Otras formaciones geográficas ligadas a leyendas costarricense incluyen el volcán Irazú y el volcán Turrialba, el cerro de tremedal y la piedra de San Isidro, en San Ramón, así como la Piedra del Encanto en el Cerro de La Carpintera (Zeledón, 2018). 
+
+
+Column {.tabset .tabset-fade}
+----------------------------------------------------------
+
+### Figura 5. Piedra de Aserrí. Fotografía de Jarquín Drone (2020). 
+
+
+<div>
+<p style = 'text-align:center;'>
+<img src="imagenes/piedra_aserri.jpg" alt="JuveYell" width=100%>
+</p>
+</div>
+
+
+
+# Valores estéticos {data-navmenu="Servicios culturales"}
+
+
+Column {data-width=450}
+----------------------------------------------------------
+
+###
+
+**Valores estéticos**
+
+
+El paisaje es un servicio brindado por el ecosistema que repercute en la escogencia de locaciones para construcción de infraestructura como viviendas y complejos turísticos, influyendo en el valor de la tierra en un área particular. Por otro lado, el valor estético del paisaje puede servir como recurso para la generación de producciones audiovisuales. La RBCVC ofrece países tipo páramo de fácil acceso desde la gran área metropolitana, la zona con mayor concentración de servicios en el país.  Esta característica ya ha sido aprovechada por producciones internacionales, como es el caso de la película Congo de 1995, con escenas filmadas en el Volcán Irazú (Figura 6). Asimismo, el parque Nacional Braulio Carrillo ha sido locación para la filmación de documentales naturalistas por parte de Discovery Channel. En el año 2021 fue aprobada la Ley de atracción de inversiones fílmicas en Costa Rica, lo que representa un aliciente para el aprovechamiento de este servicio brindado por el ecosistema. 
+
+
+Column {.tabset .tabset-fade}
+----------------------------------------------------------
+
+### Figura 6. Fotograma de la película de Hollywood, Congo (1995), grabado en el Volcán Irazú.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="imagenes/paisaje_pelicula_irazu.png" alt="JuveYell" width=100%>
+</p>
+</div>
+
+
+
+# Turismo {data-navmenu="Servicios culturales"}
+
+Column {data-width=450}
+----------------------------------------------------------
+
+###
+
+**Turismo**
+
+Las áreas silvestres protegidas (ASP) ubicadas en la RBCVC ofrecen atractivos naturales que atraen a gran cantidad de visitantes tanto nacionales como internacionales. Un caso notorio es el del Parque Nacional Volcán Irazú corresponde a la segunda ASP con mayor cantidad de visitas a nivel nacional, solo por detrás del Parque Nacional Manuel Antonio, con un 17% del total de visitantes a áreas silvestres protegidas del país durante el periodo 2018-2020. Otra de las áreas silvestres con gran visitación en la RBCVC es el Parque Nacional Volcán Poás, siendo después de su reapertura en agosto 2018, tras 16 meses de cierre, la cuarta ASP con mayor cantidad de visitas en el periodo 2019-2020, solo superada por los parques nacionales Manuel Antonio, Volcán Irazú y Marino Ballena (SINAC, 2019, 2021). 
+
+
+Column {.tabset .tabset-fade}
+----------------------------------------------------------
+
+###
+
+
+```{r, include=FALSE}
+
+visitacion_ICT <- read.csv("bases/visitacion_asp_2018_2020.csv")
+```
+
+
+ <br>Cuadro 1. Cantidad de personas que visitan áreas silvestres en la RBCVC.
+```{r}
+formattable(visitacion_ICT, list(Visitas_2018 = color_tile("transparent","lightblue"), Visitas_2019 = color_tile("transparent","lightblue"), Visitas_2020 = color_tile("transparent","lightblue")), align = "l")
+```
+
+
+El Parque Nacional Volcán Poás permaneció cerrado entre abril de 2017 y agosto de 2018, como una medida adoptadas ante eventos de actividad volcánica. En el caso del Parque Nacional Volcán Turrialba, permanence cerrado por esta misma razón desde el año 2012. 
+
+# Recreación {data-navmenu="Servicios culturales"}
+
+
+Column {data-width=450}
+----------------------------------------------------------
+
+###
+
+
+**Deporte y recreación**
+
+Además de las áreas silvestres protegidas, existen en el territorio de la RBCVC una serie de espacios administrados por instituciones públicas orientados hacia el aprovechamiento del capital natural para fines deportivos y de recreación. Entre estos espacios se encuentran los parques recreativos administrados por el Instituto Costarricense del Deporte y la Recreación (ICODER). Se solicitó al ICODER los datos de visitación de los parques recreativos durante los últimos 5 años, siendo posible obtener los datos correspondientes al año 2021 y primer trimestre de 2022 (Cuadro 2). 
+
+Adicionalmente, expertos en el tema han señalado la provincia de Cartago como la mejor zona para la práctica del ciclismo en Costa Rica, entre otras razones, debido a su topografía variada y la posibilidad de entrenar en zonas con nivel de exigencia alta, como el distrito de Tierra Blanca (Masís, 2017). El ciclista costarricense más destacado de la historia, Andrey Amador, ha señalado los entrenamientos en Cartago como claves para el éxito de su desempeño a nivel internacional (CRhoy, 2012) (Figura 7).
+
+
+Column {.tabset .tabset-fade}
+----------------------------------------------------------
+
+### Cuadro 2. Cantidad de personas que visitan parques recreativos en la RBCVC.
+
+
+```{r, include=FALSE}
+
+visitacion_ICODER <- read.csv("bases/parques_ICODER.csv")
+```
+
+
+```{r}
+
+visitacion_ICODER <- visitacion_ICODER |> slice_head(n=7)
+
+
+
+formattable(visitacion_ICODER, list(X2021 = color_tile("transparent","lightblue"), I.Trimestre.2022 = color_tile("transparent","lightblue"), pageLength = 7), align = "l")
+```
+Se debe tener presente que estos datos se obtuvieron bajo las restricciones impuestas por la pandemia, en el caso del Parque Dominica durante 2021 se abrió únicamente durante el mes de diciembre. A partir de octubre de 2021 la administración del Parque del Este fue cedida a la Municipalidad de Montes de Oca, por lo que no se tienen datos de esos meses. 
+
+### Figura 7. Andrey Amador entrenado en la provincia de Cartago. Fotografía de José Cordero (2015).
+
+
+<div>
+<p style = 'text-align:center;'>
+<img src="imagenes/andrey_amador_cartago.jpg" alt="JuveYell" width=100%>
+</p>
+</div>
+
+
