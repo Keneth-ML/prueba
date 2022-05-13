@@ -9,4 +9,4 @@ Landa landa landa
 
 
 
-No lo sé Rick, parece falso.
+Borro lo anterior.
